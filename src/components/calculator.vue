@@ -1,22 +1,36 @@
 <template>
   <div>
     <form>
-      <input type="number" placeholder="amount" />
-      <input type="number" placeholder="interest" />
+      <input type="number" placeholder="amount" v-model="amount" />
+      <input type="number" placeholder="interest" v-model="interest" />
     </form>
     <form>
       term:
-      <input type="radio" id="15" name="term" />
+      <input type="radio" id="15" name="term" @click="term = 15" />
       <label class="p-1" for="15">15</label>
-      <input type="radio" id="30" name="term" />
+      <input type="radio" id="30" name="term" @click="term = 30" />
       <label class="p-1" for="30">30</label>
     </form>
+    total: {{ total }}
   </div>
 </template>
 
 <script>
+import calculate from "../utils/calculate";
 export default {
   name: "calculator",
+  data() {
+    return {
+      amount: null,
+      interest: null,
+      term: null,
+    };
+  },
+  computed: {
+    total() {
+      return calculate(this.amount, this.interest, this.term).balance;
+    },
+  },
 };
 </script>
 
