@@ -1,8 +1,18 @@
 <template>
-  <div>
+  <div id="calculator">
     <form>
-      <input type="number" placeholder="amount" v-model="amount" />
-      <input type="number" placeholder="interest" v-model="interest" />
+      <input
+        class="m"
+        type="number"
+        placeholder="amount"
+        v-model="amount"
+      /><br />
+      <input
+        class="m"
+        type="number"
+        placeholder="interest"
+        v-model="interest"
+      />
     </form>
     <form>
       term:
@@ -49,5 +59,14 @@ li {
 }
 a {
   color: #42b983;
+}
+.m {
+  margin: 5px 0px;
+}
+#calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
 }
 </style>

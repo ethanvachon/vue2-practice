@@ -18,13 +18,21 @@
 }
 
 #nav {
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 8vh;
   background-color: #2c3e50;
+  display: flex;
+}
+
+#nav a {
+  padding-left: 20px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
