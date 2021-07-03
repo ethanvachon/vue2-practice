@@ -1,13 +1,19 @@
 <template>
-  <div class="home">home</div>
+  <div class="home">
+    <div v-for="post in posts" :key="post.id">
+      <post :post="post" />
+    </div>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import post from "../components/post.vue";
 export default {
   name: "Home",
-  components: {},
+  components: {
+    post,
+  },
   mounted() {
     this.$store.dispatch("getPosts");
   },

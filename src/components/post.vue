@@ -1,10 +1,15 @@
 <template>
-  <div></div>
+  <div>{{ post }}</div>
 </template>
 
 <script>
 export default {
-  setup() {},
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
