@@ -8,6 +8,21 @@
   </div>
 </template>
 
+<script>
+import { onAuth } from "@bcwdev/auth0-vue";
+import { setBearer } from "./services/AxiosService";
+export default {
+  name: "App",
+  async beforeCreate() {
+    await onAuth();
+    if (this.$auth.isAuthenticated) {
+      setBearer(this.$auth.bearer);
+      //NOTE if you want to do something everytime the user logs in, do so here
+    }
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
