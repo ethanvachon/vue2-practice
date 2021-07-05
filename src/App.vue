@@ -4,11 +4,13 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/calculator">Calculator</router-link>
     </div>
+    <navbar />
     <router-view />
   </div>
 </template>
 
 <script>
+import navbar from "./components/navbar.vue";
 import { onAuth } from "@bcwdev/auth0-vue";
 import { setBearer } from "./services/AxiosService";
 export default {
@@ -19,6 +21,9 @@ export default {
       setBearer(this.$auth.bearer);
       //NOTE if you want to do something everytime the user logs in, do so here
     }
+  },
+  components: {
+    navbar,
   },
 };
 </script>
