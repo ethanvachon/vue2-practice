@@ -22,7 +22,7 @@ export default {
       await this.$auth.loginWithPopup();
       if (this.$auth.isAuthenticated) {
         setBearer(this.$auth.bearer);
-        this.$store.dispatch("getProfile");
+        this.$store.dispatch("getAccount");
         // NOTE if you want to do something everytime the user logs in, do so here
       }
     },
