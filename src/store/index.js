@@ -11,6 +11,9 @@ export default new Vuex.Store({
     comments: [],
   },
   mutations: {
+    setProfile(state, profile) {
+      state.profile = profile;
+    },
     setPosts(state, posts) {
       state.posts = posts;
     },
@@ -24,6 +27,8 @@ export default new Vuex.Store({
   actions: {
     async getAccount({ commit }) {
       try {
+        let res = await api.get("account");
+        commit("setProfile", res.data);
       } catch (error) {
         console.log(error);
       }
@@ -31,7 +36,6 @@ export default new Vuex.Store({
     async getPosts({ commit }) {
       try {
         let res = await api.get("api/posts");
-        console.log(res.data);
         commit("setPosts", res.data);
       } catch (error) {
         console.log(error);
