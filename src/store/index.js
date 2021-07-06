@@ -22,6 +22,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async getAccount({ commit }) {
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async getPosts({ commit }) {
       try {
         let res = await api.get("api/posts");
