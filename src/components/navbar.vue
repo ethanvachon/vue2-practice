@@ -1,15 +1,19 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/calculator">Calculator</router-link>
-    <button
-      class="btn btn-success"
-      @click="login"
-      v-if="!$auth.isAuthenticated"
-    >
-      Login
-    </button>
-    <button class="btn btn-danger" @click="logout" v-else>logout</button>
+  <div id="nav" class="d-flex justify-content-between">
+    <div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/calculator">Calculator</router-link>
+    </div>
+    <div>
+      <button
+        class="btn btn-success mx-3"
+        @click="login"
+        v-if="!$auth.isAuthenticated"
+      >
+        Login
+      </button>
+      <button class="btn btn-danger mx-3" @click="logout" v-else>logout</button>
+    </div>
   </div>
 </template>
 
