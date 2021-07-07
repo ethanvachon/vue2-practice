@@ -1,21 +1,24 @@
 <template>
   <div class="home">
     <button
-      class="btn btn-success"
-      @click="active = !active"
-      v-if="$auth.isAuthenticated"
+      class="btn btn-success mt-3 mx-3"
+      @click="active = true"
+      v-if="$auth.isAuthenticated && active == false"
     >
-      Post
+      Create a Post
     </button>
-    <form v-if="active == true" @submit.prevent="createPost">
-      <input
-        v-model="newPost.body"
-        type="text"
-        placeholder="Share whats on your mind here"
-      />
-      <button class="btn" type="submit">Post</button>
-    </form>
-    <div v-for="post in posts" :key="post.id">
+    <div class="d-flex justify-content-center align-items-center mt-3">
+      <form v-if="active == true" @submit.prevent="createPost">
+        <input
+          class="rounded width p-1"
+          v-model="newPost.body"
+          type="text"
+          placeholder="Share whats on your mind here"
+        />
+        <button class="btn btn-success mx-2" type="submit">Post</button>
+      </form>
+    </div>
+    <div class="mt-3" v-for="post in posts" :key="post.id">
       <post :post="post" />
     </div>
   </div>
@@ -51,4 +54,9 @@ export default {
   },
 };
 </script>
-Calculator
+
+<style scoped>
+.width {
+  width: 60vw;
+}
+</style>
