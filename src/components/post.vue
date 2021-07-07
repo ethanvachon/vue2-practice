@@ -1,5 +1,12 @@
 <template>
-  <div>{{ post }}</div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">{{ post.creator.name }}</p>
+        <h4 class="card-title">{{ post.body }}</h4>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
