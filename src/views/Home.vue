@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <button class="btn btn-success" @click="active = !active">Post</button>
+    <h1 v-if="active == true">test</h1>
     <div v-for="post in posts" :key="post.id">
       <post :post="post" />
     </div>
@@ -13,6 +15,11 @@ export default {
   name: "Home",
   components: {
     post,
+  },
+  data() {
+    return {
+      active: false,
+    };
   },
   mounted() {
     this.$store.dispatch("getPosts");

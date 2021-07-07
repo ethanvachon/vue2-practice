@@ -12,7 +12,14 @@
       >
         Login
       </button>
-      <button class="btn btn-danger mx-3" @click="logout" v-else>logout</button>
+      <button
+        class="btn btn-danger mx-3"
+        @click="logout"
+        v-if="$auth.isAuthenticated"
+      >
+        Log out
+      </button>
+      <CreatePostModal />
     </div>
   </div>
 </template>
