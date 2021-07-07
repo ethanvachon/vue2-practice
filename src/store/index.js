@@ -46,6 +46,17 @@ export default new Vuex.Store({
       commit("setComments", res.data);
     },
     async createPost({ commit }, newPost) {
+      const date = new Date();
+      let hours = date.getHours();
+      if (hours > 12) {
+        hours -= 12;
+      }
+      let minutes = date.getMinutes();
+      if (minutes < 10) {
+        // @ts-ignore
+        minutes = "0" + minutes;
+      }
+      newPost.time = `${hours}:${minutes} ${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`;
       let res = await api.post("api/posts", newPost);
       commit("addPost", res.data);
     },

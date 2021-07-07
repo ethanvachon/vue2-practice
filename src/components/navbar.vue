@@ -19,7 +19,6 @@
       >
         Log out
       </button>
-      <CreatePostModal />
     </div>
   </div>
 </template>

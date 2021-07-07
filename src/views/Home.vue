@@ -1,7 +1,20 @@
 <template>
   <div class="home">
-    <button class="btn btn-success" @click="active = !active">Post</button>
-    <h1 v-if="active == true">test</h1>
+    <button
+      class="btn btn-success"
+      @click="active = !active"
+      v-if="$auth.isAuthenticated"
+    >
+      Post
+    </button>
+    <form v-if="active == true" @submit.prevent="createPost">
+      <input
+        v-model="newPost.body"
+        type="text"
+        placeholder="Share whats on your mind here"
+      />
+      <button class="btn" type="submit">Post</button>
+    </form>
     <div v-for="post in posts" :key="post.id">
       <post :post="post" />
     </div>
@@ -19,6 +32,7 @@ export default {
   data() {
     return {
       active: false,
+      newPost: {},
     };
   },
   mounted() {
@@ -27,6 +41,12 @@ export default {
   computed: {
     posts() {
       return this.$store.state.posts;
+    },
+  },
+  methods: {
+    createPost() {
+      this.$store.dispatch("createPost", this.newPost);
+      this.newPost = {};
     },
   },
 };
