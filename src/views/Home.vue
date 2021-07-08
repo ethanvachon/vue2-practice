@@ -52,6 +52,7 @@ export default {
     createPost() {
       this.$store.dispatch("createPost", this.newPost);
       this.newPost = {};
+      this.active = false;
     },
   },
 };

@@ -27,7 +27,7 @@ export default {
 }
 .card-text {
   font-size: 0.8em;
-  padding: 1em;
+  padding: 0.5em;
   margin: 0px;
 }
 </style>

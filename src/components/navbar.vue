@@ -13,7 +13,7 @@
         Login
       </button>
       <button
-        class="btn btn-danger mx-3"
+        class="btn btn-success mx-3"
         @click="logout"
         v-if="$auth.isAuthenticated"
       >
