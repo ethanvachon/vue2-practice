@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex justify-content-center align-items-center">
-    <div class="card">
-      <div class="card-body">
+    <div class="card width">
+      <div class="d-flex justify-content-between border-bottom">
         <p class="card-text">{{ post.creator.name }}</p>
-        <h4 class="card-title">{{ post.body }}</h4>
+        <p class="card-text">{{ post.time }}</p>
       </div>
+      <h6 class="p-2">{{ post.body }}</h6>
     </div>
   </div>
 </template>
@@ -20,4 +21,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.width {
+  width: 80%;
+}
+.card-text {
+  font-size: 0.8em;
+  padding: 1em;
+  margin: 0px;
+}
+</style>

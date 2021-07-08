@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container-fluid">
     <button
       class="btn btn-success mt-3 mx-3"
       @click="active = true"
@@ -18,8 +18,10 @@
         <button class="btn btn-success mx-2" type="submit">Post</button>
       </form>
     </div>
-    <div class="mt-3" v-for="post in posts" :key="post.id">
-      <post :post="post" />
+    <div class="row">
+      <div class="mt-3 col-6" v-for="post in posts" :key="post.id">
+        <post :post="post" />
+      </div>
     </div>
   </div>
 </template>
