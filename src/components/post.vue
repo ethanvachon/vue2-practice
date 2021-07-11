@@ -19,6 +19,7 @@
         </div>
         <form
           @submit.prevent="postComment"
+          v-if="$auth.isAuthenticated"
           class="d-flex justify-content-center p-1 my-1"
         >
           <input
@@ -52,11 +53,25 @@ export default {
   async mounted() {
     const res = await api.get("api/posts/" + this.post.id + "/comments");
     this.comments = res.data;
+    console.log(this.comments);
   },
   methods: {
-    postComment() {
+    async postComment() {
       this.newComment.postId = this.post.id;
-      this.$store.dispatch("postComment", this.newComment);
+      // this.$store.dispatch("postComment", this.newComment);
+      const date = new Date();
+      let hours = date.getHours();
+      if (hours > 12) {
+        hours -= 12;
+      }
+      let minutes = date.getMinutes();
+      if (minutes < 10) {
+        // @ts-ignore
+        minutes = "0" + minutes;
+      }
+      this.newComment.time = `${hours}:${minutes} ${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`;
+      const res = await api.post("api/comments", this.newComment);
+      this.comments.push(res.data);
       this.newComment = {};
     },
   },
