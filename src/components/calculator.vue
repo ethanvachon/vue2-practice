@@ -1,5 +1,6 @@
 <template>
   <div id="calculator">
+    Mortgage Calculator
     <form>
       <input
         class="m"
@@ -66,6 +67,7 @@ a {
 #calculator {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: 90vh;
 }
