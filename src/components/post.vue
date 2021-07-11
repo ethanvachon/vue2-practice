@@ -6,9 +6,28 @@
         <p class="card-text">{{ post.time }}</p>
       </div>
       <h6 class="p-2 m-0">{{ post.body }}</h6>
-      <div class="d-flex justify-content-end align-items-center">
-        <p class="pb-2 m-0">{{ comments.length }}</p>
+      <div
+        class="d-flex justify-content-end align-items-center"
+        @click="active = !active"
+      >
+        <p class="pb-2 m-0">{{ comments != null ? comments.length : 0 }}</p>
         <i class="fas fa-comment px-2 pb-2"></i>
+      </div>
+      <div v-if="active == true" class="d-flex flex-column">
+        <div v-for="comment in comments" :key="comment.id">
+          {{ comment.body }}
+        </div>
+        <form
+          @submit.prevent="postComment"
+          class="d-flex justify-content-center p-1 my-1"
+        >
+          <input
+            v-model="newComment.body"
+            type="text"
+            placeholder="add comment"
+            class="width-100"
+          />
+        </form>
       </div>
     </div>
   </div>
@@ -26,12 +45,20 @@ export default {
   data() {
     return {
       comments: null,
+      active: false,
+      newComment: {},
     };
   },
   async mounted() {
     const res = await api.get("api/posts/" + this.post.id + "/comments");
     this.comments = res.data;
-    console.log(this.comments);
+  },
+  methods: {
+    postComment() {
+      this.newComment.postId = this.post.id;
+      this.$store.dispatch("postComment", this.newComment);
+      this.newComment = {};
+    },
   },
 };
 </script>
@@ -39,6 +66,9 @@ export default {
 <style scoped>
 .width {
   width: 80%;
+}
+.width-100 {
+  width: 100%;
 }
 .card-text {
   font-size: 0.8em;
